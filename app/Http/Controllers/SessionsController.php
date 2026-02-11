@@ -26,16 +26,21 @@ class SessionsController extends Controller
                 ->withInput();
         }
 
-        // regenerate the sessions
+        // invalidate then regenerate the sessions
+        $request->session()->invalidate();
         $request->session()->regenerate();
 
         // if success then redirect to homepage
         return redirect()->intended('/')->with('success', 'Welcome back!');
     }
 
-    public function destroy()
+    public function destroy(Request $request)
     {
         Auth::logout();
+
+        // invalidate then regenerate the sessions
+        $request->session()->invalidate();
+        $request->session()->regenerate();
 
         return redirect('/login');
     }
