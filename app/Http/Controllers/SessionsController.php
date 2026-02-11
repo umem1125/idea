@@ -26,8 +26,7 @@ class SessionsController extends Controller
                 ->withInput();
         }
 
-        // invalidate then regenerate the sessions
-        $request->session()->invalidate();
+        // regenerate the sessions
         $request->session()->regenerate();
 
         // if success then redirect to homepage
