@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\IdeaStatus;
-use Illuminate\Support\Collection;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Step;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 
 class Idea extends Model
 {
