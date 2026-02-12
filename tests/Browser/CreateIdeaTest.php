@@ -14,7 +14,6 @@ it('creates the new idea', function () {
         ->click('@submit-new-link-button')
         ->fill('@new-link', 'https://laracasts.com')
         ->click('@submit-new-link-button')
-        ->debug()
         ->click('Create')
         ->assertPathIs('/ideas');
 
