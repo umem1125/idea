@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -19,7 +20,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('status')->default('pending');
             $table->string('image_path')->nullable();
-            $table->json('links')->nullable()->default(`[]`);
+            $table->json('links')->default(DB::raw('(JSON_ARRAY())'));
             $table->timestamps();
         });
     }
