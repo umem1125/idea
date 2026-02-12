@@ -29,7 +29,7 @@ class CreateIdea
         }
 
         // to make sure consistency data. if have an error, all of data edited will be rollback
-        DB::transaction(function () use ($data) {
+        DB::transaction(function () use ($data, $attributes) {
             $idea = $this->user->ideas()->create($data);
 
             $steps = collect($attributes['steps'] ?? [])->map(fn($step) => ['description' => $step]);
