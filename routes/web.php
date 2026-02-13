@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\IdeaPhotoController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\StepController;
@@ -18,6 +19,9 @@ Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->name('idea.d
 Route::delete('/ideas/{idea}/photo', [IdeaPhotoController::class, 'destroy'])->name('idea.destroy.image')->middleware('auth');
 
 Route::patch('/steps/{step}', [StepController::class, 'update'])->name('step.update')->middleware('auth');
+
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
 
 Route::get('/register', [RegisteredUserController::class, 'create'])->middleware('guest');
 Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest');

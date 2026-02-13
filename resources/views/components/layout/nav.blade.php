@@ -8,6 +8,7 @@
 
         <div class="flex gap-x-5 items-center font-semibold">
             @auth
+                <a href="{{ route('profile.edit') }}" class="btn btn-outlined">Edit Profile</a>
                 <form action="/logout" method="POST">
                     @csrf
                     <button type="submit">Log out</button>
