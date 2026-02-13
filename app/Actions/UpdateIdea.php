@@ -6,6 +6,7 @@ use App\Models\Idea;
 use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class UpdateIdea
 {
@@ -20,6 +21,10 @@ class UpdateIdea
 
         // save to storage/public/ideas
         if ($attributes['image'] ?? false) {
+            // Delete old image if exists
+            if ($idea->image_path) {
+                Storage::disk('public')->delete($idea->image_path);
+            }
             $data['image_path'] = $attributes['image']->store('ideas', 'public');
         }
 

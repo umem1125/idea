@@ -24,18 +24,16 @@ class CreateIdea
         ])->toArray();
 
         // save to storage/public/ideas
-        if ($attributes['image'] ?? false) {
-            $data['image_path'] = $attributes['image']->store('ideas', 'public');
-        }
-
         // to make sure consistency data. if have an error, all of data edited will be rollback
         DB::transaction(function () use ($data, $attributes) {
+            // save to storage/public/ideas
+            if ($attributes['image'] ?? false) {
+                $data['image_path'] = $attributes['image']->store('ideas', 'public');
+            }
+
             $idea = $this->user->ideas()->create($data);
 
-            // $steps = collect($attributes['steps'] ?? [])->map(fn($step) => ['description' => $step]);
-
             $idea->steps()->createMany($attributes['steps'] ?? []);
-            // $idea->steps()->createMany($steps);
         });
     }
 }

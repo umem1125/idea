@@ -47,7 +47,7 @@ class IdeaController extends Controller
      */
     public function store(StoreIdeaRequest $request, CreateIdea $action)
     {
-        // dd($request->all());
+        // dd($request->validated());
 
         // using method handle that created in CreateIdea class
         $action->handle($request->safe()->all());

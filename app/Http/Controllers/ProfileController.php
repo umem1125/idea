@@ -37,7 +37,7 @@ class ProfileController extends Controller
             'password' => ['nullable', Password::defaults()]
         ]);
 
-        $originalEmail = $request->email;
+        $originalEmail = $user->email;
 
         $user->update([
             'name' => $request->name,
@@ -46,7 +46,7 @@ class ProfileController extends Controller
         ]);
 
         // if email was changed, send an EmailChanged notification
-        if ($originalEmail !== $request->email) {
+        if ($originalEmail !== $user->email) {
             Notification::route('mail', $originalEmail)
                 ->notify(new EmailChanged($user, $originalEmail));
         }

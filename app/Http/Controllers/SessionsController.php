@@ -30,7 +30,7 @@ class SessionsController extends Controller
         $request->session()->regenerate();
 
         // if success then redirect to homepage
-        return redirect()->intended('/')->with('success', 'Welcome back!');
+        return redirect()->intended(route('idea.index'))->with('success', 'Welcome back!');
     }
 
     public function destroy(Request $request)

@@ -15,7 +15,7 @@ class EmailChanged extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct(protected User $user, string $originalEmail)
+    public function __construct(protected User $user, protected string $originalEmail)
     {
         //
     }

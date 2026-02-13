@@ -18,7 +18,6 @@
             id="{{ $name }}" 
             name="{{ $name }}" 
             class="input"
-            {{ $attributes }} 
             value="{{ old($name, $value) }}"
             {{ $attributes }} 
         />
