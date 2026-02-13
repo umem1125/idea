@@ -86,10 +86,6 @@ class IdeaController extends Controller
         $action->handle($request->safe()->all(), $idea);
 
         return back()->with('success', 'Idea updated!');
-
-        // update the idea
-
-        // upload the image also
     }
 
     /**
