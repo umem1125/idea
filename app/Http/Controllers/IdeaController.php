@@ -79,7 +79,12 @@ class IdeaController extends Controller
      */
     public function update(UpdateIdeaRequest $request, Idea $idea)
     {
+        // dd($request->all());
         Gate::authorize('workWith', $idea);
+
+        // update the idea
+
+        // upload the image also
     }
 
     /**
